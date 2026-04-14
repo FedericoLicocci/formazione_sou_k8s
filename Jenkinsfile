@@ -9,19 +9,21 @@ pipeline {
     stages{
         stage('Adding tag to image'){
             steps {
-               if (env.TAG_NAME) {
-                   echo "Building from tag: ${env.TAG_NAME}"
-                   IMAGE_TAG = env.TAG_NAME
-               }
-               else if (env.BRANCH_NAME == 'main') {
-                   echo "Building from main branch"
-                   IMAGE_TAG = "latest"
-               }
-               else if (env.BRANCH_NAME == 'develop') {
-                   echo "Building from develop branch"
-                   def shacommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()       
-                   IMAGE_TAG = "develop-${sha-commit}"
-               }
+                scripts {
+                    if (env.TAG_NAME) {
+                       echo "Building from tag: ${env.TAG_NAME}"
+                       IMAGE_TAG = env.TAG_NAME
+                    }
+                    else if (env.BRANCH_NAME == 'main') {
+                         echo "Building from main branch"
+                         IMAGE_TAG = "latest"
+                    }
+                    else if (env.BRANCH_NAME == 'develop') {
+                         echo "Building from develop branch"
+                         def shacommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()       
+                         IMAGE_TAG = "develop-${sha-commit}"
+                    }
+                }
             }
         }
         stage('Build'){
