@@ -31,7 +31,7 @@ pipeline {
                 script {
                     def docker_hub_name = env.DOCKER_HUB_NAME.toLowerCase()
                     def image_name = env.IMAGE_NAME.toLowerCase()
-                    def image_tage = env.IMAGE_TAG.toLowerCase()
+                    def image_tag = env.IMAGE_TAG.toLowerCase()
                     def fullname = "${docker_hub_name}/${image_name}"
                     sh "docker build -t ${fullname}:${image_tag} ."
                 }
