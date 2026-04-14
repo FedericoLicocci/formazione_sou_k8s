@@ -9,7 +9,7 @@ pipeline {
     stages{
         stage('Adding tag to image'){
             steps {
-                scripts {
+                script {
                     if (env.IMAGE_TAG) {
                        echo "Building from tag: ${env.TAG_NAME}"
                        IMAGE_TAG = env.TAG_NAME
