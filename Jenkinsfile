@@ -4,7 +4,7 @@ pipeline {
     environment {
         DOCKER_HUB_NAME = 'fedelic'
         IMAGE_NAME = 'test'
-        IMAGE_TAG = ''
+        IMAGE_TAG = 'latest'
     }
     stages{
         stage('Adding tag to image'){
