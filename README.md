@@ -2,4 +2,4 @@
 
 Obiettivo: Esercitarsi nell'utilizzo di Jenkins e Kubernetes
 
-Develop Branch
+Develop Branch, added tag
