@@ -5,6 +5,7 @@ pipeline {
         DOCKER_HUB_NAME = 'fedelic'
         IMAGE_NAME = 'test'
         IMAGE_TAG = 'latest'
+	KUBECONFIG = credentials('kube-config-file')
     }
     stages{
         stage('Adding tag to image'){
@@ -45,5 +46,12 @@ pipeline {
                                                   }
             }
         }
+	stage('Check helm') {
+	    steps {
+	        withCredentials([file(credentialsId: 'kube-config-file', variable: 'KUBECONFIG')]) {
+                    sh "helm list --all-namespace"
+                }
+	    }
+	}
     }
 }
