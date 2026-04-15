@@ -47,7 +47,13 @@ pipeline {
             }
         }
 	stage('Check helm') {
-	    steps {
+	    agent {
+                docker {
+                    image 'alpine/helm:latest'
+		    args '-u root'
+                }
+            }
+            steps {
 	        withCredentials([file(credentialsId: 'kube-config-file', variable: 'KUBECONFIG')]) {
                     sh "helm list --all-namespace"
                 }
