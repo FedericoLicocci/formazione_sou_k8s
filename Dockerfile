@@ -4,7 +4,7 @@ ENV APP_PATH=/usr/local/app
 
 WORKDIR $APP_PATH
 
-RUN pip3 install -r flask
+RUN pip3 install flask
 
 COPY app.py $APP_PATH
 
