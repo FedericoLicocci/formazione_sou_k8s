@@ -10,11 +10,7 @@ pipeline {
         stage('Adding tag to image'){
             steps {
                 script {
-                    if (env.IMAGE_TAG) {
-                       echo "Building from tag: ${env.TAG_NAME}"
-                       IMAGE_TAG = env.TAG_NAME
-                    }
-                    else if (env.BRANCH_NAME == 'main') {
+                    if (env.BRANCH_NAME == 'main') {
                          echo "Building from main branch"
                          IMAGE_TAG = "latest"
                     }
