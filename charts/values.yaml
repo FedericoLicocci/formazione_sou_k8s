@@ -1,0 +1,10 @@
+# Values for Helm chart
+
+image:
+  repository: "fedelic/test"
+  tag: "latest"
+  pullPolicy: "IfNotPresent"
+
+service:
+  type: NodePort #Expose the app externally
+  port: 8000
