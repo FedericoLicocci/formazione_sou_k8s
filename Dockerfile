@@ -1,5 +1,12 @@
-FROM alpine
+FROM python:3.13.13-alpine
 
-RUN echo "Build Test success"
+ENV APP_PATH=/usr/local/app
 
-CMD ["echo", "Container started"]
+WORKDIR $APP_PATH
+
+RUN pip3 install -r flask
+
+COPY app.py $APP_PATH
+
+ENTRYPOINT ["python3"]
+CMD ["app.py"]
