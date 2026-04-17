@@ -50,14 +50,15 @@ pipeline {
 	    agent {
                 docker {
                     image 'alpine/helm:latest'
-		    args '-u root'
+		            args '-u root --network host --entrypoint=""'
                 }
             }
             steps {
 	        withCredentials([file(credentialsId: 'kube-config-file', variable: 'KUBECONFIG')]) {
-                    sh "helm list --all-namespace"
+                    sh "helm upgrade --install test ./charts --namespace formazione-sou --create-namespace --wait"
                 }
 	    }
 	}
     }
 }
+
