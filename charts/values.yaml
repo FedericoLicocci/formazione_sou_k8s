@@ -8,3 +8,19 @@ image:
 service:
   type: NodePort #Expose the app externally
   port: 8000
+
+resources:
+  requests:
+    cpu: "100m"
+    memory: "128Mi"
+  limits:
+    cpu: "200m"
+    memory: "256Mi"
+
+probes:
+  liveness:
+    path: /health
+    port: 8000
+  readiness:
+    path: /ready
+    port: 8000
