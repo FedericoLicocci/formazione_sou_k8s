@@ -4,7 +4,6 @@ pipeline {
     environment {
         DOCKER_HUB_NAME = 'fedelic'
         IMAGE_NAME = 'test'
-        IMAGE_TAG = 'latest'
 	KUBECONFIG = credentials('kube-config-file')
     }
     stages{
