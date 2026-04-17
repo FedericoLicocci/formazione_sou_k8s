@@ -19,8 +19,6 @@ resources:
 
 probes:
   liveness:
-    path: /health
     port: 8000
   readiness:
-    path: /ready
     port: 8000

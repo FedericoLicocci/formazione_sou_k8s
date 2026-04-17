@@ -21,15 +21,14 @@ spec:
           resources:
             {{- toYaml .Values.resources | nindent 12 }}
 
-          probes:
-            liveness:
-              tcpSocket:
-                port: {{ .Values.probes.liveness.port }}
-              initialDelaySeconds: 5
-              periodSeconds: 10
+          livenessProbe:
+            tcpSocket:
+              port: {{ .Values.probes.liveness.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
 
-            readiness:
-              tcpSocket:
-                port: {{ .Values.probes.readiness.port }}
-              initialDelaySeconds: 5
-              periodSeconds: 10
+          readinessProbe:
+            tcpSocket:
+              port: {{ .Values.probes.readiness.port }}
+            initialDelaySeconds: 5
+            periodSeconds: 10
