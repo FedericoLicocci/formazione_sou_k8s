@@ -12,12 +12,12 @@ pipeline {
                 script {
                     if (env.BRANCH_NAME == 'main') {
                          echo "Building from main branch"
-                         IMAGE_TAG = "latest"
+                         env.IMAGE_TAG = "latest"
                     }
                     else if (env.BRANCH_NAME == 'develop') {
                          echo "Building from develop branch"
                          def shacommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()       
-                         IMAGE_TAG = "develop-${shacommit}"
+                         env.IMAGE_TAG = "develop-${shacommit}"
                     }
                 }
             }
