@@ -18,7 +18,7 @@ pipeline {
                     else if (env.BRANCH_NAME == 'develop') {
                          echo "Building from develop branch"
                          def shacommit = sh(script: "git rev-parse --short HEAD", returnStdout: true).trim()       
-                         IMAGE_TAG = "develop-${sha-commit}"
+                         IMAGE_TAG = "develop-${shacommit}"
                     }
                 }
             }
